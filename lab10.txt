@@ -1,0 +1,63 @@
+Oprea Olivia Maria-Magdalena 333CA
+
+Ex1:
+netcat -l 2024
+netcat localhost 2024
+netcat -u -l 2024
+netcat -u localhost 2024
+
+Ex2:??
+firefox
+Si nu prea vrea sa mearga, da Error:cannot open display:
+
+Ex3:
+Pe fep:
+wget http:://10.9.4.129:8080
+index.html saved :)
+Pe masina:
+wget --no-check-certificate https://red/file.data
+
+Ex4:
+wget -r -np -R "index.html*" http://red/folder
+
+Ex5:
+wget "http://localhost/login.php?name=Lab10&email=rl@upb.ro"
+
+Ex6:
+curl http://red/index.html
+curl icanhazip.com
+Afiseaza ca in lab pagina cu text :)
+
+Ex7:
+curl ftp://red/download/file-10M.dat -o file-10M.dat
+
+Ex8:
+curl ftp://red/ana-ftp-file-5M.dat -o ana-file-5M.dat --user ana
+
+Ex9:
+mail -s "Netflix and Chill" corina
+Cc:
+Bunaaa.
+
+Eu am filmul tu vi cu contul :)
+
+Bogdan
+^D
+
+mail mie:
+echo 'Test' | mail -s "Heyaaa" opreaolivia73@gmail.com
+
+Ex10:
+mail -r "bogdan.georgescu@rl.cs.pub.ro" -s "Test" opreaolivia73@gmail
+Cc:
+Test
+
+Test mail.
+
+Ex11:
+upload si download:
+curl -T bogdan-ftp-data-3M.dat ftp://red/ --user ana:student
+curl ftp://red/bogdan-ftp-data-3M.dat --user ana:student -o bogdan-ftp-data-3M.dat
+
+Ex12:
+uuencode arhiva.zip arhiva.zip | mail opreaolivia73@gmail.com -s "test"

@@ -1,0 +1,17 @@
+Oprea Olivia Maria-Magdalena 333CA
+
+Ex5:
+La inceput dau ip neighbor show, iar fiecare intrare din tabela ARP este STALE, dar dupa ce dau ping
+intre ele acestea vor aparea REACHABLE.
+
+EX6:
+Problema aici este ca statia are masca /24 si hostul /32 => retele diferite.
+Rezolvare: schimbam masca la host la /24 cu ip address add 7.7.7.1/24 dev verh-red.
+
+EX7:
+Iar avem problema cu mastile (pe statia blue) aceasta avand masca /24 si hostul /32 => nu se poate
+comunica. De asemenea nu avem adrese configurate pe interfete si acestea mai sunt si oprite.
+
+EX8:
+Mai intai vom adauga adresele IPv6.
+Se pornesc interfetele pentru fiecare culoare.

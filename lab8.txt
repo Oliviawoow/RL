@@ -1,0 +1,39 @@
+Oprea Olivia Maria-Magdalena 333CA
+
+EX 6:
+Am folosit comenzile din lab pentru blocarea comunicarii pe porturi:
+iptables -A FORWARD -d green -p tcp --dport telnet -j REJECT
+iptables -A FORWARD -d green -p tcp --dport ftp -j REJECT
+primesc 'connection refused' deci zic ca merge :)
+
+EX 7:
+Am blocat accesul la green cu:
+iptables -A FORWARD -d green -p tcp --dport 22 -j REJECT
+
+EX 8:
+Am permis accesul pe statia green cu comanda:
+iptables -I FORWARD 1 -s red -d green -p tcp --dport 22 -j ACCEPT
+Am plasat aceasta regula prima asa asigurandu-ma ca este luata prima si
+ca o sa mearga conexiunea ssh intre red si green.
+Totusi restul conexiunilor ar trebuii sa fie blocate de la ex anterior.
+
+EX 9:
+Am sters regulile cu:
+iptables -F FORWARD
+si am conexiune intre red si green cum se vede ruland si comanda din lab:
+iptables -L FORWARD -n -v 
+
+EX 10:
+Pentru capturare am rulat mai intai:
+tcpdump -w out.txt -i veth-red port 21
+ping red
+Si de aici m-am blocat ca nush dc nu merge sincers
+
+EX 11:
+Pentru a bloca conexiunilel de la green la red dar invers nu folosim comanda:
+iptables -A FORWARD -s green -d red -p tcp --dport ssh -j REJECT
+
+EX 12:
+Creez o cheie privata pe ana@host pe care o dam lui bogdan@blue.
+Pentru rsync:
+rsync -av --ignore-existing proiecte/ -e ssh bogdan@blue

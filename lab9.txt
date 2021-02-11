@@ -1,0 +1,38 @@
+Oprea Olivia Maria-Magdalena 333CA
+
+Ex 5:
+Am adaugat o regula de redirectare a traficului de pe host pe portul 10022 catre red 22:
+iptables -t nat -A PREROUTING -p tcp --dport 10022 -j DNAT --to-destination 192.168.1.2:22
+Ma conectez la red prin fep prin ssh:
+ssh -l student $ADRESA_IP_MV -p 10022
+Green se poate conecta inca al red prin ssh asa ca adaug o noua regula ca se poata
+conecata numai de pe fep:
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 10022 -j DNAT --to-destination 192.168.1.2:22
+
+Ex 6:
+La fel ca la ex anterior adaug noi reguli pentru green si blue sa fie accesate din exterior:
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 20022 -j DNAT --to-destination 192.168.2.2:22
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 30022 -j DNAT --to-destination 192.168.3.2:22
+
+Ex 7:
+Am capturat traficul dinainte de port forwarding red:
+tcpdump -n -i eth0 tcp dst port 10022 -w /home/student/portfwd_eth0_output.pcap
+Am capturat traficul dupa de port forwarding red:
+tcpdump -n -i veth-red tcp dst port 22 -w /home/student/portfwd_veth-red_output.pcap
+Am generat trafic de pe fep:
+ssh -l student $ADRESA_IP_VM -p 10022
+
+Ex 8:
+Am adaugat alte reguli pentru a face posibila conectarea prin telnet (port 23):
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 10023 -j DNAT --to-destination 192.168.1.2:23
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 20023 -j DNAT --to-destination 192.168.2.2:23
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 30023 -j DNAT --to-destination 192.168.3.2:23
+
+Ex 9:
+Am urmarit comenzile din lab si le-am salvat cu:
+iptables-save > /etc/iptables-rules
+si restaurat cu:
+iptables-restore < /etc/iptables-rules
+
+Ex 10:
+Am folosit comenzile din lab :)

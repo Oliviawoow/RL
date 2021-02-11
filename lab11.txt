@@ -1,0 +1,21 @@
+Oprea Olivia 333CA
+
+Ex 6:
+nmap -Pn -v -T5 -sV -O hermes.codacloud.net
+
+Ex 7:
+nmap -Pn -v -T5 -sV -top-ports 100 hermes.codacloud.net
+
+Ex 8:
+Well e la fel ca la 6 :)
+sau
+nmap -A -T5 --osscan-guess hermes.codacloud.net
+
+Ex 9:
+Portul 22 nu cred ca are vulnerabilitati.
+Portul 80 in schimb are versiunea serverului de http.
+Pentru acea versiunea de apache am gasit CVE-2019-10098.
+
+Ex 10:
+Green: slowloris -p 80 -v 192.168.1.2
+Aparent inca pot intra pe site so presupun ca nu a prea mers :)
